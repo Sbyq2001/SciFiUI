@@ -1,6 +1,10 @@
 package ie.tudublin;
 
 import processing.core.PApplet;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
 
 public class SciFi extends PApplet {
     int backgroundColor = color(10, 10, 50);
@@ -23,6 +27,11 @@ public class SciFi extends PApplet {
     float circleSize = 10;
     float numberOfcircles = 10;
 
+    Minim minim;
+    AudioPlayer ap;
+    AudioInput ai;
+    AudioBuffer ab;
+
     public void settings() {
         size(800, 800);
     }
@@ -30,6 +39,10 @@ public class SciFi extends PApplet {
     public void setup() {
         background(0);
         colorMode(HSB);
+        minim = new Minim(this);
+        ap = minim.loadFile("AvengersSoundtrack.mp3", 1024);
+        ap.play();
+        ab = ap.mix;
     }
 
     public void draw() {
