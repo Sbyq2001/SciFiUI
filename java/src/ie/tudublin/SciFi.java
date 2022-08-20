@@ -63,6 +63,11 @@ public class SciFi extends PApplet {
         rainbowCircles();
 
         radar();
+        radarBar(-250, 600, 3, color1);
+        radarBar(-190, 600, 1, color2);
+        radarBar(-130, 600, 2, color3);
+        radarBar(-70, 600, 4, color4);
+        radarBar(-10, 600, 0.5f, color5);
     }
 
     void sliderCircle() {
@@ -131,5 +136,22 @@ public class SciFi extends PApplet {
                 (float) (height / 3 - 20),
                 (float) (width / 3 - 20 + sin(angle) * (((height + width) / 6) / 2.25)),
                 (float) (height / 3 - 20 - cos(angle) * (((height + width) / 6) / 2.25)));
+    }
+
+    void radarBar(float x, float y, float speed, int color) {
+        float positionForX = x - width / 2 + 300;
+        float positionForY = y - height / 2 + 40;
+        float offsetforY = map(sin((float) (offset * 0.01 * speed)), -1, 1, 10, 125);
+
+        strokeWeight(1);
+        stroke(120, 220, 200, 120);
+        noFill();
+        rect(positionForX, positionForY, 30, 125);
+
+        noStroke();
+
+        fill(color);
+        rect(positionForX, 125 + positionForY, 30, -(125 - offsetforY));
+        rect(positionForX - 10, positionForY + offsetforY, 50, 5);
     }
 }
