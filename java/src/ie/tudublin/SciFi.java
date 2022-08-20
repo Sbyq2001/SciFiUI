@@ -59,6 +59,7 @@ public class SciFi extends PApplet {
 
         offset++;
 
+        maincircle();
     }
 
     void sliderCircle() {
@@ -83,4 +84,23 @@ public class SciFi extends PApplet {
                 -(height / 2) + 140);
     }
 
+    void maincircle() {
+        noFill();
+        stroke(color1, 150);
+        strokeWeight(16);
+        ellipse(0, 0, 250, 250);
+        stroke(color3, 150);
+        strokeWeight(1);
+        ellipse(0, 0, 280, 280);
+        for (int i = 0; i < 10; i++) {
+            float offsect = i * PI / 5 + offset / 100.0F;
+            stroke(backgroundColor);
+            strokeWeight(1);
+            line(sin(offsect) * 110, -cos(offsect) * 110, sin(offsect) * 135, -cos(offsect) * 135);
+
+            stroke(color5);
+            strokeWeight(2);
+            line(sin(offsect) * 140, cos(offsect) * 140, sin(offsect) * 150, cos(offsect) * 150);
+        }
+    }
 }
