@@ -61,6 +61,8 @@ public class SciFi extends PApplet {
 
         maincircle();
         rainbowCircles();
+
+        radar();
     }
 
     void sliderCircle() {
@@ -115,5 +117,19 @@ public class SciFi extends PApplet {
         rad += PI / 10;
         if (rad > 2 * PI)
             rad = 0;
+    }
+
+    void radar() {
+        noStroke();
+        fill(0, 5);
+
+        stroke(color3);
+        strokeWeight(20);
+        float angle = radians(millis() / 22.5f);
+        line(
+                (float) (width / 3 - 20),
+                (float) (height / 3 - 20),
+                (float) (width / 3 - 20 + sin(angle) * (((height + width) / 6) / 2.25)),
+                (float) (height / 3 - 20 - cos(angle) * (((height + width) / 6) / 2.25)));
     }
 }
