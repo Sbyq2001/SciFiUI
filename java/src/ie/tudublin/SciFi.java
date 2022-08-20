@@ -68,6 +68,8 @@ public class SciFi extends PApplet {
         radarBar(-130, 600, 2, color3);
         radarBar(-70, 600, 4, color4);
         radarBar(-10, 600, 0.5f, color5);
+
+        layerCircle();
     }
 
     void sliderCircle() {
@@ -153,5 +155,20 @@ public class SciFi extends PApplet {
         fill(color);
         rect(positionForX, 125 + positionForY, 30, -(125 - offsetforY));
         rect(positionForX - 10, positionForY + offsetforY, 50, 5);
+    }
+
+    void layerCircle() {
+        noStroke();
+
+        pushMatrix();
+        shearX((float) (PI / 4.0));
+        translate(600, -300);
+        for (int i = 0; i < 20; i++) {
+
+            fill(color1, 5 + i * 5);
+            ellipse(-i * 15 - cos((float) (offset / 50.0)) * 5 * (5 - i),
+                    i * 15 + cos((float) (offset / 50.0)) * 5 * (5 - i), 80f, 80f);
+        }
+        popMatrix();
     }
 }
