@@ -60,6 +60,7 @@ public class SciFi extends PApplet {
         offset++;
 
         maincircle();
+        rainbowCircles();
     }
 
     void sliderCircle() {
@@ -102,5 +103,17 @@ public class SciFi extends PApplet {
             strokeWeight(2);
             line(sin(offsect) * 140, cos(offsect) * 140, sin(offsect) * 150, cos(offsect) * 150);
         }
+    }
+
+    void rainbowCircles() {
+        for (int i = 0; i < numberOfcircles; i++) {
+            float newRad = rad + map(i, 0, numberOfcircles, 0, 2 * PI);
+            float radius = i * circleSize + circleSize;
+            fill(map(rad, 0, 2 * PI, 0, 255), 255, 255);
+            ellipse(cos(newRad) * radius, sin(newRad) * radius, circleSize, circleSize);
+        }
+        rad += PI / 10;
+        if (rad > 2 * PI)
+            rad = 0;
     }
 }
